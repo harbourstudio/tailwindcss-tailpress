@@ -26,11 +26,22 @@ const fontSizeMapper = (fontSizes) => {
     return result;
 }
 
+const spacingMapper = (spacers) => {
+    let result = {};
+
+    spacers.forEach(function(spacer) {
+        result[''+spacer.slug+''] = spacer.size;
+    });
+
+    return result;
+}
+
 const tailwind = plugin(function ({addUtilities, addComponents, e, prefix, config, theme}) {
     const colors = theme('colors');
     const margin = theme('margin');
     const screens = theme('screens');
     const fontSize = theme('fontSize');
+    const spacing = theme('spacingSizes');
 
     const widthUtilities = {
         '.w-wide': {
